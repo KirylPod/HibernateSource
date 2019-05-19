@@ -8,11 +8,10 @@ import java.util.Scanner;
 
 public class Start {
 
-    public static Scanner sc = new Scanner(System.in);
+
 
     public static void main(String[] args) {
-          int operatBook = 24;
-//        String operatCharter = "";
+
 //        double xOb, nztB, xMin, xMax, nztMin, nztMax;
         Session session = HibernateUtil.getSessionFactory().openSession();
 

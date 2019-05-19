@@ -30,22 +30,26 @@ public class BookHelper {
         CriteriaQuery cq = cb.createQuery(Book.class); // при помощи sq будут формироваться запросы
         Root<Book> root = cq.from(Book.class); // основная таблица, корневой entity (в sql запросе - from)
 
-        cq.select(root).where(cb.equal(root.get(Book_.id),24) );
+
+        cq.select(root).where(cb.equal(root.get(Book_.id), Scan.sc.nextInt()) );
 
         // 3 ЭТАП ВЫПОЛНЕНИЯ ЗАПРОСА
 
         Query query = session.createQuery(cq);
+
         List<Book> bookList = query.getResultList(); // Создаем коллекцию
-
-
-
-
 
         session.close();
         return bookList;
 
     }
 }
+
+
+
+
+
+
 //    Selection[] selection = {root.get(Book_.id), root.get(Book_.name), root.get(Book_.title)};
 //
 //    ParameterExpression<String> nameParam = cb.parameter(String.class, "name");
