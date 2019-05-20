@@ -16,6 +16,11 @@ public class Start {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
 
+        for (Book book : new BookHelper().getBooksList()) {
+            System.out.println(
+                    book.getId() + " | " + book.getName() + " | " + book.getTitle());
+        }
+        System.out.println("Выбирите сборник");
         for (Book book : new BookHelper().getBookList()) {
             System.out.println(
                     book.getId() + " | " + book.getName() + " | " + book.getTitle());
