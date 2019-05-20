@@ -11,6 +11,7 @@ import java.util.List;
 
 public class BookHelper {
 
+
     private SessionFactory sessionFactory;
 
     public BookHelper() {
@@ -18,7 +19,7 @@ public class BookHelper {
         sessionFactory = HibernateUtil.getSessionFactory();
     }
 
-    public List<Book> getBooksList() {
+     public List<Book> getBooksList() {
         // 1 ЭТАП
         Session session = sessionFactory.openSession();  // Открываем сессию для манипуляций с персист объектами
 
@@ -38,23 +39,24 @@ public class BookHelper {
     }
 
     public List<Book> getBookList() {
-        // 1 ЭТАП
-        Session session = sessionFactory.openSession();  // Открываем сессию для манипуляций с персист объектами
 
-        // 2 ЭТАП ПОДГОТОВКИ ЗАПРОСА
-        CriteriaBuilder cb = session.getCriteriaBuilder(); // создаем объект-конструктор запросов Criteria API
-        CriteriaQuery cq = cb.createQuery(Book.class); // при помощи sq будут формироваться запросы
-        Root<Book> root = cq.from(Book.class); // основная таблица, корневой entity (в sql запросе - from)
+        Session session = sessionFactory.openSession();
+
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Book.class);
+        Root<Book> root = cq.from(Book.class);
 
         cq.select(root).where(cb.equal(root.get(Book_.id), Scan.sc.nextInt()));
 
-        // 3 ЭТАП ВЫПОЛНЕНИЯ ЗАПРОСА
         Query query = session.createQuery(cq);
-        List<Book> bookList = query.getResultList(); // Создаем коллекцию
+        List<Book> bookList = query.getResultList();
         session.close();
         return bookList;
 
     }
+
+
+
 
 }
 

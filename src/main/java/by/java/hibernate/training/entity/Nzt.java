@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+
 public class Nzt {
     private String id;
     private Integer indic;

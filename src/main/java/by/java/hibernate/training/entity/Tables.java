@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
+
 public class Tables {
     private int id;
     private String title;
