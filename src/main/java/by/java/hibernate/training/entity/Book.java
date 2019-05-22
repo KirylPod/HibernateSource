@@ -1,12 +1,18 @@
 package by.java.hibernate.training.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of="id")
 
 public class Book {
     private int id;
@@ -43,18 +49,10 @@ public class Book {
         this.title = title;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return id == book.id &&
-                Objects.equals(name, book.name) &&
-                Objects.equals(title, book.title);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, title);
-    }
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Charters.class, mappedBy = "book")
+
+    public List<Charters> charter = new ArrayList<>();
+
+
 }

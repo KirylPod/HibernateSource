@@ -55,6 +55,18 @@ public class BookHelper {
 
     }
 
+    public Book getBook (int id){
+
+        Session session = sessionFactory.openSession();
+
+        Book book = session.get(Book.class, id);
+
+        book.getCharter().get(0).getId();
+
+        return book;
+
+    }
+
 
 
 

@@ -1,5 +1,6 @@
 package by.java.hibernate.training;
 
+import by.java.hibernate.training.entity.Book;
 import by.java.hibernate.training.entity.Charters;
 import by.java.hibernate.training.entity.Charters_;
 import org.hibernate.Session;
@@ -38,4 +39,13 @@ public class ChartersHelper {
         return chartersList;
 
     }
+
+//    public Charters getCharters (){
+//
+//        Session session = sessionFactory.openSession();
+//
+//        Charters charters = session.get(Charters.class);
+//
+//
+//    }
 }

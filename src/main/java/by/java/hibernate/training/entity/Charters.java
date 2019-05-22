@@ -1,15 +1,21 @@
 package by.java.hibernate.training.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of="id")
+
 public class Charters {
     private String id;
     private String section;
+
 
     @Id
     @Column(name = "id", nullable = false, length = 30)
@@ -31,17 +37,9 @@ public class Charters {
         this.section = section;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Charters charters = (Charters) o;
-        return Objects.equals(id, charters.id) &&
-                Objects.equals(section, charters.section);
-    }
+    @ManyToOne
+    @JoinColumn (name = "book_id")
+    public Book book;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, section);
-    }
+
 }
