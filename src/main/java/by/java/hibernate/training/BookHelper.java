@@ -1,6 +1,7 @@
 package by.java.hibernate.training;
 
 import by.java.hibernate.training.entity.Book;
+import by.java.hibernate.training.entity.Charters;
 import by.java.hibernate.training.entity.Book_;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,13 +12,9 @@ import java.util.List;
 
 public class BookHelper {
 
-
     private SessionFactory sessionFactory;
 
-    public BookHelper() {
-
-        sessionFactory = HibernateUtil.getSessionFactory();
-    }
+    public BookHelper() {sessionFactory = HibernateUtil.getSessionFactory(); }
 
      public List<Book> getBooksList() {
         // 1 ЭТАП
@@ -61,7 +58,7 @@ public class BookHelper {
 
         Book book = session.get(Book.class, id);
 
-        book.getCharter().get(0).getId();
+        book.getCharters().get(0).getId();
 
         return book;
 

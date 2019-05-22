@@ -9,7 +9,7 @@ public class Start {
 
     public static void main(String[] args) {
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+ //       Session session = HibernateUtil.getSessionFactory().openSession();
 
         new BookHelper().getBook(24);
 

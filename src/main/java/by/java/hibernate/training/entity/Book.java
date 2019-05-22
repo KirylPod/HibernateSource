@@ -13,6 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of="id")
+@ToString(of = "name", includeFieldNames = false)
 
 public class Book {
     private int id;
@@ -49,10 +50,17 @@ public class Book {
         this.title = title;
     }
 
+    public Book(int id, String name, String title) {
+        this.id = id;
+        this.name = name;
+        this.title = title;
+    }
 
     @OneToMany(fetch = FetchType.EAGER, targetEntity = Charters.class, mappedBy = "book")
 
-    public List<Charters> charter = new ArrayList<>();
+    public List<Charters> charters = new ArrayList<>();
 
-
+    public List<Charters> getCharters() {
+        return charters;
+    }
 }
